@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="GLogger Client">
+    <description>The coding standard for GLogger</description>
+
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+    <arg name="report" value="full"/>
+    <arg name="report-file" value="./logs/codeSniffReport.txt"/>
+    <arg name="extensions" value="php"/>
+    <arg name="tab-width" value="4"/>
+    <arg name="encoding" value="utf-8"/>
+    <arg name="colors"/>
+    <arg value="nsp"/>
+
+    <rule ref="PSR2">
+    </rule>
+
+</ruleset>

@@ -1,0 +1,8 @@
+# Ignore the following files
+.settings
+.project
+.DS_Store
+.idea/*
+/vendor/
+/logs/*
+/logs/codeSniffReport.txt
