@@ -53,6 +53,33 @@ class Log
     }
 
     /**
+     * Getting backtrace
+     *
+     * https://www.php.net/manual/en/function.debug-backtrace.php#111355
+     *
+     * @param int $ignore ignore calls
+     *
+     * @return string
+     */
+    protected function getBacktrace($ignore = 2)
+    {
+        $trace = '';
+        foreach (debug_backtrace() as $k => $v) {
+            if ($k < $ignore) {
+                continue;
+            }
+
+            array_walk($v['args'], function (&$item, $key) {
+                $item = var_export($item, true);
+            });
+
+            $trace .= '#' . ($k - $ignore) . ' ' . $v['file'] . '(' . $v['line'] . '): ' . (isset($v['class']) ? $v['class'] . '->' : '') . $v['function'] . '(' . implode(', ', $v['args']) . ')' . "\n";
+        }
+
+        return $trace;
+    }
+
+    /**
      * @param $message
      */
     public function debug($message)
@@ -81,7 +108,7 @@ class Log
      */
     public function error($message)
     {
-        $this->logger->error($message);
+        $this->logger->error($message  . " - Backtrace: " . $this->getBacktrace());
     }
 
     /**
@@ -89,6 +116,6 @@ class Log
      */
     public function critical($message)
     {
-        $this->logger->critical($message);
+        $this->logger->critical($message   . " - Backtrace: " . $this->getBacktrace());
     }
 }
