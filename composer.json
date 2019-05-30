@@ -10,7 +10,8 @@
   ],
   "require": {
     "php": ">=5.6.4",
-    "katzgrau/klogger": "^1.2.1"
+    "katzgrau/klogger": "^1.2.1",
+    "ext-json": "*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.*",
