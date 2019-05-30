@@ -76,7 +76,7 @@ class Log
             $trace .= '#' . ($k - $ignore) . ' ' . $v['file'] . '(' . $v['line'] . '): ' . (isset($v['class']) ? $v['class'] . '->' : '') . $v['function'] . '(' . implode(', ', $v['args']) . ')' . "\n";
         }
 
-        return $trace;
+        return addslashes($trace);
     }
 
     /**
